@@ -1,0 +1,20 @@
+In this directory, we carry out control experiments for Spaulding-Astudillo and Mitchell (2024). 
+
+In CTRL, we use a uniform tropospheric lapse rate of 7 K/km, while varying the magnitude and height of the RH minimum, surface-air temperature discontinuity (TEMREL), and continuum effects on for water vapor and carbon dioxide, but not methane. 
+
+The "case" nomenclature of our RFM simulations is:
+
+ctrl-h2o-RHmid-%d-zmid-%d-uniform-%d
+ctrl-co2
+ctrl-ch4
+
+The 'ctrl' classifier indicates that we have fixed lapse rate, and a single absorbing species in each case. The mixing ratios are specified in Methods. 
+
+This sole purpose of this directory is to run RFM in three separate configurations.
+(1) runtype = 'od_trans'           # this computes optical depth and transmissivity 
+(2) runtype = 'continuum_cooling'  # this computes cooling rates with continuum absorption for CO2 and H2O
+(3) runtype = 'continuum_kabs'     # this computes a reference absorption coefficient with continuum absorption for H2O
+
+
+
+Our secondary goal is to compute the absorption coefficient look-up table with and without continuum absorption. Per the user manual, the default absorption coefficient omits the continuum absorption part. This default behavior can be overriden by setting the H2OWNG flag to 'NOSUB' in the *GAS section, which forces the model to output the absorption coefficient as a sum of the continuum and line-only parts. More details on this can be found here: https://eodg.atm.ox.ac.uk/RFM/sum/gassec#h2owng

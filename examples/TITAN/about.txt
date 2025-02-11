@@ -1,0 +1,38 @@
+The objective of this script is to diagnose the infrared opacity of Titan's atmosphere. We will use a mix of nitrogen and methane. 
+
+The saturation mixing ratio of methane at the tropopause is 0.017 (Griffith et al. 2011).
+
+Surface pressure of 1.5 atm. Infrared opacity is mostly due to CIA of N2, CH4, and H2.
+Hazes are mostly transparent in the thermal infrared (Fig 1 from McKay 1991), so can be neglected from our analysis.
+The mixing ratio of H2 is about 0.3% on Titan, and the mixing ratio of CH4 is a few percent (McKay 1991).
+The window region on Titan is 400-600 cm-1, and most of the opacity is at lower wavenumbers than this due to N2 and CH4. 
+Unlike CO2 on Earth, the production of H2 on Titan is controlled by photochemistry. 
+Opacity of CH4-N2 scales as CH4, but opacity of CH4-CH4 scales as (CH4)^2, so this means that in a warmer climate, the opacity of 
+CH4-CH4 could dominate over CH4-N2 between 200-400 cm-1, which should be taken into account for warmer simulations of Titan. 
+The rule-of-thumb is that 3 times higher concentration of CH4 than present-day would faciliate this transition in major source
+of infrared opacity at wavenumbers slightly less than the window region. 
+
+We will want to include the following infrared sources of opacity:
+(1) N2 
+(2) CH4
+(3) H2
+and the following sources of collision-induced absorption (over certain temp range): 
+(1) N2-N2  (70-200 K, for 0-450 cm-1)
+(2) N2-CH4 (40-400 K)
+(3) N2-H2   (40-400 K)
+(4) CH4-CH4 (optional at Ts<94 K)
+We may be able to avoid (4)-CIA if we only consider surface temperatures less than the present-day value.
+Lack of CIA for N2-N2 at wavenumbers greater than 450 cm-1 is not an issue because N2-N2 is negligible there. 
+In any case, we would expect a transition to steady precipitation at these temperatures. 
+
+Of these gases, the CTM absorption is available only for N2. 
+
+The tropospheric lapse rate is <1 K/km (McKay et al. 1997), with the dry adiabatic lapse rate approximately 1.3 K/km. 
+Note that the tropopause is at 40km, so for a surface temperature of 94 K,the lapse rate must be <1. 
+    
+Planning the experiments needed, we need a case with (optical depth of)
+(1) N2-N2 only 
+(2) N2-CH4 only
+(3) N2-H2 only
+(4) CH4-CH4 only
+(5) Every combination of (1)-(4)

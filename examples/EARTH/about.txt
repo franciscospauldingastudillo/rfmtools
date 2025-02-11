@@ -1,0 +1,2 @@
+The objective of this script is to derive a flexible code that can accept any set of gases.
+Incorporates improvements to the thermodynamics of the atmosphere based on molar mixing ratios.
