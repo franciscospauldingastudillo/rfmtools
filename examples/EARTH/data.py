@@ -69,7 +69,7 @@ def get_custom_atm(par,vres1=np.arange(0,3e4,1e2),vres2=np.arange(0,3e4,1e2)):
     def get_esat_over_l(par,T):
         import math
         # SVP over liquid from DAM (Pa)
-        xi = 10 # factor to change the SVP
+        xi = 1 # factor to change the SVP
         pstar = xi*par.ptrip * (T/par.Ttrip)**((par.cpv-par.cvl)/par.rgasv) * math.exp( (par.E0v - (par.cvv-par.cvl)*par.Ttrip) / par.rgasv * (1/par.Ttrip - 1/T) )
         return pstar
     #############################################################
