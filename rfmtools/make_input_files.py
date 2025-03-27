@@ -197,7 +197,9 @@ def make_kabs_driver(
     HDR=None,
     OUTDIR=None,
     PHY=None,
-    TAN=None):
+    NLEV=None,
+    TAN=None,
+    CIA=None):
     """
     Depending on `genre`, we'll expect a certain number of flags to be present...
     Maybe make flags an input LIST???
@@ -258,6 +260,13 @@ def make_kabs_driver(
     if TAN is None:
         raise ValueError("Oops! You need to specify TAN (in this case is interpreted as DIM)")    
         
+    # Advise about NLEV
+    if NLEV is not None:
+        print("FYI: NLEV is ignored by make_kabs_driver. Proceeding...")
+
+    # Advise about CIA
+    if CIA is not None:
+        print("FYI: CIA is ignored by make_kabs_driver. Proceeding...")
         
     # Make flags!
     labels={}
