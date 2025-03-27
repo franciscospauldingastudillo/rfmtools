@@ -69,6 +69,8 @@ def run_RFM(par,dataset):
     print(PHY)
     # Extract active gases from the GAS list
     gases = [key[1:].upper() for key in xgases]  # e.g., ['N2', 'CH4', 'H2']
+    if "-octm" in rfmcase: # option: continuum-only calculation
+        gases = [f"{key[1:].upper()}(CTM)" for key in xgases]
     # Optional collision-induced absorption (CIA) files
     ciafiles = [
         f"{rfmtools.utils.RFM_DIR}/hit/N2-N2_0_5000.cia",
