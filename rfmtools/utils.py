@@ -76,6 +76,7 @@ def run_RFM(par,dataset):
     # Extract active gases from the GAS list
     gases = [key[1:].upper() for key in xgases]  # e.g., ['N2', 'CH4', 'H2']
     if "-octm" in rfmcase: # option: continuum-only calculation
+        print("run_RFM: continuum-only calculation")
         gases = [f"{key[1:].upper()}(CTM)" for key in xgases]
     # Optional collision-induced absorption (CIA) files
     ciafiles = [
@@ -118,10 +119,13 @@ def run_RFM(par,dataset):
     runtype_mapping = {
         'cooling': lambda: make_driver(**common_args, SFC=f"TEMREL={TEMREL:.1f}"),
         'continuum_cooling': lambda: make_driver(**common_args, SFC=f"TEMREL={TEMREL:.1f}"),
+        'octm_cooling': lambda: make_driver(**common_args, SFC=f"TEMREL={TEMREL:.1f}"),
         'od_trans': lambda: make_driver(**common_args),
         'continuum_od_trans': lambda: make_driver(**common_args),
+        'octm_od_trans': lambda: make_driver(**common_args),
         'kabs': lambda: make_kabs_driver(**common_args, TAN="1 550 1 82 1 100"),
         'continuum_kabs': lambda: make_kabs_driver(**common_args, TAN="1 550 1 82 1 100"),
+        'octm_kabs': lambda: make_kabs_driver(**common_args, TAN="1 550 1 82 1 100"),
     }
     # run the appropriate driver
     if runtype in runtype_mapping:

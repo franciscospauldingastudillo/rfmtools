@@ -94,10 +94,16 @@ def make_driver(
     elif runtype=='continuum_cooling':
         flags="RAD FLX SFC COO CTM PRF"
         #flags="FLX ZEN COO CTM PRF HYD"
+    elif runtype=='octm_cooling': # cooling rate from continuum ONLY
+        flags="RAD FLX SFC COO CTM PRF"
+        #flags="FLX ZEN COO CTM PRF HYD"
     elif runtype=='od_trans': # optical depth & transmittance
         flags="RAD FLX TRA OPT VRT ZEN"
         #flags="FLX TRA OPT VRT ZEN HYD"
     elif runtype=='continuum_od_trans': # optical depth & transmittance with continuum
+        flags="RAD FLX TRA OPT VRT ZEN CTM"
+        #flags="FLX TRA OPT VRT ZEN CTM HYD"
+    elif runtype=='octm_od_trans': # optical depth & transmittance of continuum ONLY
         flags="RAD FLX TRA OPT VRT ZEN CTM"
         #flags="FLX TRA OPT VRT ZEN CTM HYD"
     else:
@@ -212,9 +218,11 @@ def make_kabs_driver(
          
     """
     import os
-    if runtype=='kabs':
+    if runtype=='kabs': # total absorption (no ctm)
         flags="TAB"
-    elif runtype=='continuum_kabs':
+    elif runtype=='continuum_kabs': # total absorption (line + ctm)
+        flags="TAB CTM"
+    elif runtype=='octm_kabs': # total absorption (ctm only)
         flags="TAB CTM"
     else:
         raise ValueError("runtype not recognized.")
